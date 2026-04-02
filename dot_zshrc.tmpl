@@ -28,7 +28,7 @@ export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
 
 # Custom SSL certificates
 export LOCAL_ROOT_CA="${HOME}/Library/Application Support/mkcert/rootCA.pem"
-export NODE_EXTRA_CA_CERTS="${HOME}/.certs/cloudflare.pem"
+export NODE_EXTRA_CA_CERTS="/Library/Application Support/Cloudflare/installed_cert.pem"
 
 # GitLab PAT for Claude Code marketplace auto-updates
 export GL_TOKEN="{{ onepasswordRead "op://Employee/Newbook Claude Code Plugin Marketplace/credential" }}"
