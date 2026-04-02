@@ -2,4 +2,6 @@
 @newbook:registry=https://gitlab.com/api/v4/groups/91893182/-/packages/npm/
 # Auth token for the GROUP endpoint:
 //gitlab.com/api/v4/groups/91893182/-/packages/npm/:_authToken={{ onepasswordRead "op://Employee/Gitlab Package Registry Token/credential" }}
-cafile=$HOME/.certs/cloudflare.pem
+{{ if eq .chezmoi.os "darwin" }}
+cafile=/Library/Application Support/Cloudflare/installed_cert.pem
+{{ end }}
