@@ -1,0 +1,12 @@
+[sso-session storable]
+sso_start_url = https://storable.awsapps.com/start
+sso_region = us-east-1
+
+[profile st-dev-tools]
+region = us-east-2
+cli_pager = 
+sso_session = storable
+sso_account_id = 188572534221
+sso_role_name = Bedrock-Developer-Tools
+output = json
+sso_auto_populated = true
