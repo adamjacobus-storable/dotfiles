@@ -2,7 +2,7 @@
 sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
-osid = "darwin"
+codespaces = {{ $codespaces }}
 name = "Adam Jacobus"
 email = "adam.jacobus@storable.com"
 computerName = "{{ output "scutil" "--get" "ComputerName" | trim }}"
