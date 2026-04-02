@@ -1,0 +1,211 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](bg_lighter)\
+$os\
+$username\
+[](bg:bg_light fg:bg_lighter)\
+$directory\
+[](bg:bg_lighter fg:bg_light)\
+${custom.git_common_dir}\
+$git_branch\
+$git_status\
+[](fg:bg_lighter bg:bg_light)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:bg_light bg:bg_lighter)\
+$conda\
+[](fg:bg_lighter bg:bg_light)\
+$time\
+[ ](fg:bg_light)\
+$cmd_duration\
+$line_break\
+$character"""
+
+palette = 'dracula'
+
+[os]
+disabled = false
+style = "bg:bg_lighter fg:purple"
+
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = false 
+style_user = "bg:bg_lighter fg:purple"
+style_root = "bg:bg_lighter fg:red"
+format = '[ $user]($style)'
+
+[directory]
+style = "bg:bg_light fg:cyan"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Projects" = "󰲋 "
+
+[custom.git_common_dir]
+when = "test -f .git"
+symbol = ""
+command = "git rev-parse --path-format=absolute --git-common-dir | xargs dirname | xargs basename"
+format = "[[ $symbol $output](fg:pink bg:bg_lighter)]($style)"
+
+[git_branch]
+symbol = ""
+style = "bg:pink"
+format = '[[ $symbol $branch ](fg:pink bg:bg_lighter)]($style)'
+truncation_length = 30
+
+[git_status]
+style = "bg:pink"
+format = '[[($all_status$ahead_behind )](fg:pink bg:bg_lighter)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:green bg:bg_light)]($style)'
+
+[c]
+symbol = " "
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:green bg:bg_light)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:green bg:bg_light)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:green bg:bg_light)]($style)'
+
+[php]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:green bg:bg_light)]($style)'
+
+[java]
+symbol = " "
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:green bg:bg_light)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:green bg:bg_light)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:green bg:bg_light)]($style)'
+
+[python]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:green bg:bg_light)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:comment"
+format = '[[ $symbol( $context) ](fg:crust bg:comment)]($style)'
+
+[conda]
+symbol = "  "
+style = "fg:comment bg:bg_lighter"
+format = '[$symbol$environment ]($style)'
+ignore_base = false
+
+[time]
+disabled = true 
+time_format = "%_I:%M %p"
+style = "bg:comment"
+format = '[[  $time ](fg:comment bg:bg_light)]($style)'
+
+[line_break]
+disabled = true
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:purple)'
+vimcmd_replace_symbol = '[❮](bold fg:purple)'
+vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+
+[cmd_duration]
+show_milliseconds = true
+format = " in $duration "
+style = "bg:purple"
+disabled = true
+show_notifications = true
+min_time_to_notify = 45000
+
+# Dark Theme
+[palettes.dracula]
+# Primary Colors
+pink = "#ff79c6"
+red = "#ff5555"
+yellow = "#f1fa8c"
+green = "#50fa7b"
+blue = "#644ac9"
+purple = "#bd93f9"
+cyan = "#8be9fd"
+comment = "#6272a4"
+# Background Colors
+bg_lighter = "#424450"
+bg_light = "#343746"
+bg = "#282A36"
+bg_dark = "#191A21"
+bg_darker = "#191A21"
+
+# Light Theme
+[palettes.alucard]
+# Primary Colors
+pink = "#A3144D"
+red = "#CB3A2A"
+orange = "#A34D14"
+yellow = "#846E15"
+green = "#14710A"
+blue = "#644ac9"
+purple = "#644AC9"
+cyan = "#036A96"
+comment = "#6C664B"
+# Background Colors
+bg_lighter = "#ECE9DF"
+bg_light = "#DEDCCF"
+bg = "#FFFBEB"
+bg_dark = "#CECCC0"
+bg_darker = "#BCBAB3"

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "awsAuthRefresh": "aws sso login --sso-session storable",
+  "env": {
+    "CLAUDE_CODE_USE_BEDROCK": "true",
+    "AWS_PROFILE": "st-dev-tools",
+    "AWS_REGION": "us-east-2",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/ht0x8yjh6au2",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "Claude Opus 4.6",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_DESCRIPTION": "The most intelligent model for building agents and coding",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_SUPPORTED_CAPABILITIES": "effort,max_effort,thinking,adaptive_thinking,interleaved_thinking",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/b4a8el2msw8p",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL_NAME": "Claude Haiku 4.5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL_DESCRIPTION": "The fastest model with near-frontier intelligence",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/eguwewfoot2a",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "Claude Sonnet 4.6",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL_DESCRIPTION": "The best combination of speed and intelligence",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/eguwewfoot2a",
+    "ENABLE_TOOL_SEARCH": "true",
+    "ENABLE_LSP_TOOL": "true"
+  },
+  "permissions": {
+    "defaultMode": "plan"
+  },
+  "model": "opusplan",
+  "modelOverrides": {
+    "claude-opus-4-6": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/ht0x8yjh6au2",
+    "claude-sonnet-4-6": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/eguwewfoot2a",
+    "claude-sonnet-4-5": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/keejxnv1loxv",
+    "claude-haiku-4-5": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/b4a8el2msw8p"
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path' | xargs npx prettier --write"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.local/bin/starship-claude",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "starship-claude@starship-claude": true,
+    "elements-of-style@superpowers-marketplace": true,
+    "superpowers@superpowers-marketplace": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "newbook@newbook-claude-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "newbook-claude-plugins": {
+      "source": {
+        "source": "git",
+        "url": "https://gitlab.com/storable/newbook/claude.git"
+      },
+      "autoUpdate": true
+    },
+    "nx-claude-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "nrwl/nx-ai-agents-config"
+      }
+    }
+  },
+  "effortLevel": "high"
+}

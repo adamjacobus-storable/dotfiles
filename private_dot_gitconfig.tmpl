@@ -1,0 +1,12 @@
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[user]
+	name = {{ .name }} 
+	email = {{ .email }} 
+	signingkey = {{ onepasswordRead "op://Employee/SSH Key/public key" }} 
+[pull]
+	rebase = true
+[credential "https://gitlab.com"]
+	helper = {{ lookPath "glab" }} auth git-credential

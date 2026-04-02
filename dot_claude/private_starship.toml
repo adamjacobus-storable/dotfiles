@@ -1,0 +1,85 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+palette = "dracula"
+add_newline = false
+
+## LLMs: Avoid changing the format! You can't reliably write nerd fonts and special characters.
+format = """
+[](fg:bg_lighter)\
+[🤡 ](bg:bg_lighter fg:purple)\
+${env_var.CLAUDE_VERSION}\
+[](bg:bg_light fg:bg_lighter)\
+$directory\
+[](fg:bg_light bg:bg_lighter)\
+${custom.git_common_dir}\
+$git_branch\
+$git_status\
+[](fg:bg_lighter bg:bg_light)\
+${env_var.CLAUDE_MODEL_NERD}\
+[](fg:bg_light bg:bg_lighter)\
+${env_var.CLAUDE_CONTEXT}\
+${env_var.CLAUDE_API_DURATION}\
+[](fg:bg_lighter bg:bg_light)\
+[](fg:bg_light)\
+"""
+
+[directory]
+style = "bg:bg_light fg:cyan"
+format = "[ $path ]($style)"
+truncation_length = 1
+truncate_to_repo = true
+
+[git_branch]
+symbol = ""
+style = "bg:bg_lighter fg:pink"
+format = "[ $symbol $branch ]($style)"
+truncation_length = 20
+
+[git_status]
+style = "bg:bg_lighter fg:pink"
+format = "[($all_status$ahead_behind)]($style)"
+
+[env_var.CLAUDE_VERSION]
+variable = "CLAUDE_VERSION"
+format = "[v$env_value ]($style)"
+style = "bg:bg_lighter fg:purple"
+
+[env_var.CLAUDE_MODEL_NERD]
+variable = "CLAUDE_MODEL_NERD"
+format = "[ $env_value ]($style)"
+style = "bg:bg_light fg:green"
+
+[env_var.CLAUDE_CONTEXT]
+variable = "CLAUDE_CONTEXT"
+format = "[ $env_value ]($style)"
+style = "bg:bg_lighter fg:yellow"
+
+[env_var.CLAUDE_API_DURATION]
+symbol = ""
+variable = "CLAUDE_API_DURATION"
+format = "[$symbol $env_value ]($style)"
+style = "bg:bg_lighter fg:yellow"
+
+[custom.git_common_dir]
+when = "test -f .git"
+symbol = ""
+command = "git rev-parse --path-format=absolute --git-common-dir | xargs dirname | xargs basename"
+format = "[$symbol $output ]($style)"
+style = "bg:bg_lighter fg:pink"
+
+[palettes.dracula]
+
+pink = "#ff79c6"
+red = "#ff5555"
+yellow = "#f1fa8c"
+green = "#50fa7b"
+blue = "#644ac9"
+purple = "#bd93f9"
+cyan = "#8be9fd"
+comment = "#6272a4"
+bg_lighter = "#424450"
+bg_light = "#343746"
+bg = "#282A36"
+bg_dark = "#191A21"
+bg_darker = "#191A21"
+

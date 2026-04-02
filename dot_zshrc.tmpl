@@ -1,0 +1,33 @@
+# Oh My Zsh configuration.
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="dracula"
+plugins=(aliases brew chezmoi docker docker-compose git npm nvm starship)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+export VISUAL='code --wait'
+
+# User script directory
+export PATH="${HOME}/.local/bin:${PATH}"
+
+# 1Password SSH Agent socket
+export SSH_AUTH_SOCK="${HOME}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+# Custom SSL certificates
+export LOCAL_ROOT_CA="${HOME}/Library/Application Support/mkcert/rootCA.pem"
+export NODE_EXTRA_CA_CERTS="${HOME}/.certs/cloudflare.pem"
+
+# GitLab PAT for Claude Code marketplace auto-updates
+export GL_TOKEN="{{ onepasswordRead "op://Employee/Newbook Claude Code Plugin Marketplace/credential" }}"
+
+# Custom config for the Playwright MCP
+export PLAYWRIGHT_MCP_CONFIG="${HOME}/.config/playwright-mcp/config.json"

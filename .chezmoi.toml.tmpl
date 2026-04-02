@@ -1,0 +1,12 @@
+[data]
+osid = "darwin"
+name = "Adam Jacobus"
+email = "adam.jacobus@storable.com"
+computerName = "{{ output "scutil" "--get" "ComputerName" | trim }}"
+
+[scriptEnv]
+PROFILE = '/dev/null'
+
+[git]
+autoAdd = true
+autoCommit = true
