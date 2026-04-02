@@ -1,11 +1,13 @@
-{{- $codespaces:= env "CODESPACES" | not | not -}}
+{{- $devcontainer:= env "DEVCONTAINER" | not | not -}}
 sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
-codespaces = {{ $codespaces }}
+devcontainer = {{ $devcontainer }}
 name = "Adam Jacobus"
 email = "adam.jacobus@storable.com"
+{{- if eq .chezmoi.os "darwin" }}
 computerName = "{{ output "scutil" "--get" "ComputerName" | trim }}"
+{{- end }}
 
 [scriptEnv]
 PROFILE = '/dev/null'
