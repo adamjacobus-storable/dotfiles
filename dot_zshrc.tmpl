@@ -29,7 +29,7 @@ export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
 # Custom SSL certificates
 export LOCAL_ROOT_CA="${HOME}/Library/Application Support/mkcert/rootCA.pem"
 {{- if (not .devcontainer) }}
-export NODE_EXTRA_CA_CERTS="/Library/Application\ Support/Cloudflare/installed_cert.pem"
+export NODE_USE_SYSTEM_CA=1
 {{- end }}
 
 # GitLab PAT for Claude Code marketplace auto-updates
