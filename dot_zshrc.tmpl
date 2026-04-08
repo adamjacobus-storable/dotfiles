@@ -19,25 +19,22 @@ export VISUAL='code --wait'
 # User script directory
 export PATH="${HOME}/.local/bin:${PATH}"
 
-{{- if (not .devcontainer) }}
+{{ if (not .devcontainer) -}}
 
 # 1Password SSH Agent socket
 export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
 
-{{- end }}
-
 # Custom SSL certificates
 export LOCAL_ROOT_CA="${HOME}/Library/Application Support/mkcert/rootCA.pem"
-{{- if (not .devcontainer) }}
 export NODE_USE_SYSTEM_CA=1
-{{- end }}
 
 # GitLab PAT for Claude Code marketplace auto-updates
 export GL_TOKEN="{{ onepasswordRead "op://Employee/Newbook Claude Code Plugin Marketplace/credential" }}"
 
-{{- if (not .devcontainer) }}
+# GitLab PAT for fetching packages hosted on GitLab Package Registry
+export NPM_AUTH_TOKEN="{{ onepasswordRead "op://Employee/Gitlab Package Registry Token/credential" }}"
 
 # Custom config for the Playwright MCP
 export PLAYWRIGHT_MCP_CONFIG="${HOME}/.config/playwright-mcp/config.json"
 
-{{- end }}
+{{ end -}}

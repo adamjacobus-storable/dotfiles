@@ -1,0 +1,15 @@
+packages:
+  brew:
+    brews:
+      - "awscli"
+      - "fzf"
+      - "git-filter-repo"
+      - "glab"
+      - "ripgrep"
+      - "starship"
+    casks:
+      - "1password-cli"
+      - "docker-desktop"
+      - "font-fira-code-nerd-font"
+      - "font-fira-mono-nerd-font"
+      - "ghostty"

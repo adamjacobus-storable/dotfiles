@@ -1,0 +1,12 @@
+#!/bin/bash
+
+brew bundle --file=/dev/stdin <<EOF
+{{ range .packages.brew.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ if eq .chezmoi.os "darwin" -}}
+{{ range .packages.brew.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ end -}}
+EOF

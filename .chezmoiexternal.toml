@@ -1,6 +1,8 @@
+{{- if eq .chezmoi.os "darwin" }}
 [".config/ghostty/themes/dracula"]
 type = "file"
 url = "https://raw.githubusercontent.com/dracula/ghostty/main/dracula"
+{{- end }}
 
 [".oh-my-zsh"]
 type = "archive"

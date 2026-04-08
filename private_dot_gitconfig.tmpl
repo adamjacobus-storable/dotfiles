@@ -5,7 +5,7 @@
 [user]
 	name = {{ .name }} 
 	email = {{ .email }} 
-	signingkey = {{ onepasswordRead "op://Employee/SSH Key/public key" }} 
+	signingkey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBKug366xreaZ9vJcWUdjaZhCLbXfes2uEKzKtkblNug adam.jacobus@storable.com"
 [pull]
 	rebase = true
 [credential "https://gitlab.com"]
