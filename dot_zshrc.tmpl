@@ -11,6 +11,10 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Newbook Docker aliases
+alias nblocal='docker exec -it newbook-app /bin/bash'
+alias nbconsole='docker exec -it newbook-app php -f console.php'
+
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'

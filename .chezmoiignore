@@ -1,1 +1,3 @@
 install.sh
+.oh-my-zsh/cache
+.oh-my-zsh/**/__pycache__
