@@ -5,8 +5,8 @@
     "CLAUDE_CODE_USE_BEDROCK": "true",
     "AWS_PROFILE": "st-dev-tools",
     "AWS_REGION": "us-east-2",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/ht0x8yjh6au2",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "Claude Opus 4.6",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/ayl5ln70eglv",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "Claude Opus 4.7",
     "ANTHROPIC_DEFAULT_OPUS_MODEL_DESCRIPTION": "The most intelligent model for building agents and coding",
     "ANTHROPIC_DEFAULT_OPUS_MODEL_SUPPORTED_CAPABILITIES": "effort,max_effort,thinking,adaptive_thinking,interleaved_thinking",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/b4a8el2msw8p",
@@ -24,6 +24,7 @@
   },
   "model": "opusplan",
   "modelOverrides": {
+    "claude-opus-4-7": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/ayl5ln70eglv",
     "claude-opus-4-6": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/ht0x8yjh6au2",
     "claude-sonnet-4-6": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/eguwewfoot2a",
     "claude-sonnet-4-5": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/keejxnv1loxv",
@@ -48,7 +49,6 @@
     "padding": 0
   },
   "enabledPlugins": {
-    "starship-claude@starship-claude": true,
     "elements-of-style@superpowers-marketplace": true,
     "superpowers@superpowers-marketplace": true,
     "typescript-lsp@claude-plugins-official": true,
