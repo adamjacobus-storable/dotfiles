@@ -31,6 +31,23 @@
     "claude-haiku-4-5": "arn:aws:bedrock:us-east-2:188572534221:application-inference-profile/b4a8el2msw8p"
   },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(grep *)",
+            "command": "echo '{ \"decision\": \"block\", \"reason\": \"Prefer using the Grep or Glob tool instead of using the grep command directly.\" }'"
+          },
+          {
+            "type": "command",
+            "if": "Bash(find *)",
+            "command": "echo '{ \"decision\": \"block\", \"reason\": \"Prefer using the Grep or Glob tool instead of using the find command directly.\" }'"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit|Write",
