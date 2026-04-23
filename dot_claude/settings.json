@@ -38,12 +38,17 @@
           {
             "type": "command",
             "if": "Bash(grep *)",
-            "command": "echo '{ \"decision\": \"block\", \"reason\": \"Prefer using the Grep or Glob tool instead of using the grep command directly.\" }'"
+            "command": "echo '{ \"decision\": \"block\", \"reason\": \"Prefer using the Grep or Glob tool instead of using the `grep` command directly.\" }'"
           },
           {
             "type": "command",
             "if": "Bash(find *)",
-            "command": "echo '{ \"decision\": \"block\", \"reason\": \"Prefer using the Grep or Glob tool instead of using the find command directly.\" }'"
+            "command": "echo '{ \"decision\": \"block\", \"reason\": \"Prefer using the Grep or Glob tool instead of using the `find` command directly.\" }'"
+          },
+          {
+            "type": "command",
+            "if": "Bash(git grep *)",
+            "command": "echo '{ \"decision\": \"block\", \"reason\": \"Prefer using the Grep or Glob tool instead of using the `git grep` command directly.\" }'"
           }
         ]
       }
